@@ -1,0 +1,43 @@
+<div id="annee" class="section">
+  <h1>Année Bissextile</h1>
+  <p>Entrez une année pour savoir si elle est bissextile :</p>
+
+  <form onsubmit="verifierAnnee(); return false;">
+    <input type="number" id="anneeInput" placeholder="ex: 2000" required>
+    <button type="submit">Vérifier</button>
+  </form>
+
+  <div id="resultatAnnee"></div>
+</div>
+
+<script>
+function verifierAnnee() {
+  let annee = parseInt(document.getElementById("anneeInput").value);
+  let resultat = document.getElementById("resultatAnnee");
+  let bissextile = (annee % 4 === 0 && annee % 100 !== 0) || (annee % 400 === 0);
+
+  let mois = {
+    "Janvier":31,
+    "Février": bissextile ? 29 : 28,
+    "Mars":31,
+    "Avril":30,
+    "Mai":31,
+    "Juin":30,
+    "Juillet":31,
+    "Août":31,
+    "Septembre":30,
+    "Octobre":31,
+    "Novembre":30,
+    "Décembre":31
+  };
+
+  let html = `<p>L'année <strong>${annee}</strong> est ${bissextile ? "bissextile ✅" : "non bissextile ❌"}.</p>`;
+  html += "<table><tr><th>Mois</th><th>Nombre de jours</th></tr>";
+  for (let m in mois) {
+    html += `<tr><td>${m}</td><td>${mois[m]}</td></tr>`;
+  }
+  html += "</table>";
+
+  resultat.innerHTML = html;
+}
+</script>
