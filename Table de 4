@@ -1,0 +1,10 @@
+<div id="table4" class="section">
+  <h1>Table de 4</h1>
+  <div class="card">
+    <script>
+      for(let i=1;i<=10;i++){
+        document.write("4 x "+i+" = "+(4*i)+"<br>");
+      }
+    </script>
+  </div>
+</div>
