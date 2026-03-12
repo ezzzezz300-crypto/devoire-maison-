@@ -1,0 +1,15 @@
+Accueil
+<div id="accueil" class="section">
+  <h1>HTML & CSS</h1>
+  <div class="logo">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png">
+  </div>
+  <p>
+    <b>HTML</b> est un langage utilisé pour créer la structure d'un site web.  
+    Il permet d'ajouter du texte, des images, des liens et des formulaires.
+    <br><br>
+    <b>CSS</b> est un langage utilisé pour styliser les pages HTML.  
+    Il permet d'ajouter des couleurs, des animations et un design moderne.
+  </p>
+</div>
