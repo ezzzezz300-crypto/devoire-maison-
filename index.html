@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Site HTML CSS</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+display:flex;
+background:linear-gradient(-45deg,#1e3c72,#2a5298,#ff512f,#dd2476);
+background-size:400% 400%;
+animation:gradient 10s ease infinite;
+color:white;
+}
+
+@keyframes gradient{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.menu{
+width:200px;
+height:100vh;
+background:rgba(0,0,0,0.4);
+display:flex;
+flex-direction:column;
+align-items:center;
+padding-top:40px;
+}
+
+.menu button{
+width:160px;
+margin:10px;
+padding:12px;
+border:none;
+border-radius:20px;
+background:white;
+color:#333;
+cursor:pointer;
+transition:0.3s;
+font-size:15px;
+}
+
+.menu button:hover{
+background:#ff4b2b;
+color:white;
+transform:scale(1.1);
+}
+
+.content{
+flex:1;
+text-align:center;
+padding:40px;
+}
+
+.section{
+display:none;
+animation:fade 0.6s;
+}
+
+@keyframes fade{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+.logo img{
+width:120px;
+margin:20px;
+animation:rotate 6s infinite linear;
+}
+
+@keyframes rotate{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
+.tables{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+}
+
+.card{
+background:white;
+color:black;
+padding:20px;
+border-radius:15px;
+width:200px;
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+form{
+background:white;
+color:black;
+padding:30px;
+width:320px;
+margin:auto;
+border-radius:15px;
+}
+
+input,select,textarea{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+#resultat{
+font-size:24px;
+margin-top:20px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+table, th, td{
+border:1px solid #ccc;
+color:black;
+padding:8px;
+text-align:center;
+border-radius:5px;
+}
+
+th{
+background:#f4f4f4;
+}
+
+</style>
+
+<script>
+
+function showPage(page){
+let sections=document.querySelectorAll(".section");
+sections.forEach(sec=>{
+sec.style.display="none";
+});
+document.getElementById(page).style.display="block";
+}
+
+/* fonction état de l'eau */
+function etatEau(){
+let t=document.getElementById("temperature").value;
+let r=document.getElementById("resultat");
+if(t <= 0){
+r.innerHTML="❄️ État solide (glace)";
+}
+else if(t < 100){
+r.innerHTML="💧 État liquide";
+}
+else{
+r.innerHTML="☁️ État gazeux (vapeur)";
+}
+}
+
+</script>
+
+</head>
+<body onload="showPage('accueil')">
+
+<div class="menu">
+
+<button onclick="showPage('accueil')">Accueil</button>
+<button onclick="showPage('formulaire')">Formulaire</button>
+<button onclick="showPage('table4')">Table de 4</button>
+<button onclick="showPage('tables')">Tables 0 à 10</button>
+<button onclick="showPage('eau')">État de l’eau</button>
+<button onclick="showPage('annee')">Année</button>
+
+</div>
+
+<div class="content">
+
+<!-- ACCUEIL -->
+<div id="accueil" class="section">
+<h1>HTML & CSS</h1>
+<div class="logo">
+<img src="https://cdn-icons-png.flaticon.com/512/732/732212.png">
+<img src="https://cdn-icons-png.flaticon.com/512/732/732190.png">
+</div>
+<p>
+<b>HTML</b> est un langage utilisé pour créer la structure d'un site web.  
+Il permet d'ajouter du texte, des images, des liens et des formulaires.
+<br><br>
+<b>CSS</b> est un langage utilisé pour styliser les pages HTML.  
+Il permet d'ajouter des couleurs, des animations et un design moderne.
+</p>
+</div>
+
+<!-- FORMULAIRE -->
+<div id="formulaire" class="section">
+<h1>Formulaire</h1>
+<form>
+<input type="text" placeholder="Nom">
+<input type="text" placeholder="Prénom">
+<input type="email" placeholder="Email">
+<input type="text" placeholder="Pays">
+<select>
+<option>Homme</option>
+<option>Femme</option>
+</select>
+<textarea placeholder="Pourquoi voulez-vous intégrer notre école ?"></textarea>
+<button type="submit">Envoyer</button>
+</form>
+</div>
+
+<!-- TABLE 4 -->
+<div id="table4" class="section">
+<h1>Table de 4</h1>
+<div class="card">
+<script>
+for(let i=1;i<=10;i++){
+document.write("4 x "+i+" = "+(4*i)+"<br>");
+}
+</script>
+</div>
+</div>
+
+<!-- TABLES -->
+<div id="tables" class="section">
+<h1>Tables de multiplication</h1>
+<div class="tables">
+<script>
+for(let t=0;t<=10;t++){
+document.write("<div class='card'><b>Table de "+t+"</b><br>");
+for(let i=1;i<=10;i++){
+document.write(t+" x "+i+" = "+(t*i)+"<br>");
+}
+document.write("</div>");
+}
+</script>
+</div>
+</div>
+
+<!-- EAU -->
+<div id="eau" class="section">
+<h1>État de l’eau</h1>
+<p>Entrer la température en degrés Celsius :</p>
+<form onsubmit="etatEau(); return false;">
+<input type="number" id="temperature" placeholder="Température en °C">
+<button type="submit">Vérifier</button>
+</form>
+<div id="resultat"></div>
+</div>
+<!-- ANNEE -->
+<div id="annee" class="section">
+<h1>Année Bissextile</h1>
+<p>Entrez une année pour savoir si elle est bissextile :</p>
+
+<form onsubmit="verifierAnnee(); return false;">
+<input type="number" id="anneeInput" placeholder="ex: 2000" required>
+<button type="submit">Vérifier</button>
+</form>
+
+<div id="resultatAnnee"></div>
+
+<script>
+function verifierAnnee() {
+    let annee = parseInt(document.getElementById("anneeInput").value);
+    let resultat = document.getElementById("resultatAnnee");
+    let bissextile = (annee % 4 === 0 && annee % 100 !== 0) || (annee % 400 === 0);
+
+    // Tableau des mois
+    let mois = {
+        "Janvier":31,
+        "Février": bissextile ? 29 : 28,
+        "Mars":31,
+        "Avril":30,
+        "Mai":31,
+        "Juin":30,
+        "Juillet":31,
+        "Août":31,
+        "Septembre":30,
+        "Octobre":31,
+        "Novembre":30,
+        "Décembre":31
+    };
+
+    // Affichage du résultat
+    let html = `<p>L'année <strong>${annee}</strong> est ${bissextile ? "bissextile ✅" : "non bissextile ❌"}.</p>`;
+    html += "<table><tr><th>Mois</th><th>Nombre de jours</th></tr>";
+    for (let m in mois) {
+        html += `<tr><td>${m}</td><td>${mois[m]}</td></tr>`;
+    }
+    html += "</table>";
+
+    resultat.innerHTML = html;
+}
+</script>
+
+
+</body>
+</html>
