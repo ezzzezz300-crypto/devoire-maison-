@@ -1,0 +1,23 @@
+<div id="eau" class="section">
+  <h1>État de l’eau</h1>
+  <p>Entrer la température en degrés Celsius :</p>
+  <form onsubmit="etatEau(); return false;">
+    <input type="number" id="temperature" placeholder="Température en °C">
+    <button type="submit">Vérifier</button>
+  </form>
+  <div id="resultat"></div>
+</div>
+
+<script>
+function etatEau(){
+  let t=document.getElementById("temperature").value;
+  let r=document.getElementById("resultat");
+  if(t <= 0){
+    r.innerHTML="❄️ État solide (glace)";
+  } else if(t < 100){
+    r.innerHTML="💧 État liquide";
+  } else {
+    r.innerHTML="☁️ État gazeux (vapeur)";
+  }
+}
+</script>
