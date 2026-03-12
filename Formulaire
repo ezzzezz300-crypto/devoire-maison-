@@ -1,0 +1,15 @@
+<div id="formulaire" class="section">
+  <h1>Formulaire</h1>
+  <form>
+    <input type="text" placeholder="Nom">
+    <input type="text" placeholder="Prénom">
+    <input type="email" placeholder="Email">
+    <input type="text" placeholder="Pays">
+    <select>
+      <option>Homme</option>
+      <option>Femme</option>
+    </select>
+    <textarea placeholder="Pourquoi voulez-vous intégrer notre école ?"></textarea>
+    <button type="submit">Envoyer</button>
+  </form>
+</div>
